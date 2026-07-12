@@ -1,6 +1,6 @@
-﻿using MassTransit;
+﻿using FCG.Contracts.Events;
+using MassTransit;
 using NotificationsAPI.Application.Abstractions.Services;
-using NotificationsAPI.Application.Contracts.Events;
 
 namespace NotificationsAPI.Consumers
 {

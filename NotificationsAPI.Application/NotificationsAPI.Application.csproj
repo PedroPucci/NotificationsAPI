@@ -14,4 +14,8 @@
     <ProjectReference Include="..\NotificationsAPI.Shared\NotificationsAPI.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\Events\" />
+  </ItemGroup>
+
 </Project>

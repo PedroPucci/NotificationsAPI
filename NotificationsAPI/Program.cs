@@ -14,27 +14,22 @@ builder.Services.AddMassTransit(configuration =>
 
     configuration.UsingRabbitMq((context, rabbitMq) =>
     {
-        var host = builder.Configuration["RabbitMq:Host"] ?? "localhost";
-        var username = builder.Configuration["RabbitMq:Username"] ?? "guest";
-        var password = builder.Configuration["RabbitMq:Password"] ?? "guest";
-
-        rabbitMq.Host(host, "/", hostConfiguration =>
+        rabbitMq.Host("localhost", "/", host =>
         {
-            hostConfiguration.Username(username);
-            hostConfiguration.Password(password);
+            host.Username("guest");
+            host.Password("guest");
         });
 
         rabbitMq.ReceiveEndpoint(
-            builder.Configuration["RabbitMq:UserCreatedQueue"]
-                ?? "user-created-notifications",
+            "notifications-user-created",
             endpoint =>
             {
-                endpoint.ConfigureConsumer<UserCreatedEventConsumer>(context);
+                endpoint.ConfigureConsumer<UserCreatedEventConsumer>(
+                    context);
             });
 
         rabbitMq.ReceiveEndpoint(
-            builder.Configuration["RabbitMq:PaymentProcessedQueue"]
-                ?? "payment-processed-notifications",
+            "notifications-payment-processed",
             endpoint =>
             {
                 endpoint.ConfigureConsumer<PaymentProcessedEventConsumer>(

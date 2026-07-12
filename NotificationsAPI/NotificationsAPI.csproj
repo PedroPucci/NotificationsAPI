@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FCG.Contracts" Version="1.0.0" />
     <PackageReference Include="MassTransit" Version="8.3.2" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.25" />
@@ -18,6 +19,10 @@
     <ProjectReference Include="..\NotificationsAPI.Application\NotificationsAPI.Application.csproj" />
     <ProjectReference Include="..\NotificationsAPI.Infrastructure\NotificationsAPI.Infrastructure.csproj" />
     <ProjectReference Include="..\NotificationsAPI.Shared\NotificationsAPI.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Messaging\" />
   </ItemGroup>
 
 </Project>
