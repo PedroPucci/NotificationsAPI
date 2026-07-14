@@ -1,10 +1,7 @@
-version: "3.9"
-
 services:
-
   notifications-api:
     build:
-      context: ../NotificationsAPI
+      context: .
       dockerfile: NotificationsAPI/Dockerfile
 
     image: notifications-api
@@ -15,21 +12,10 @@ services:
 
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
-      ASPNETCORE_URLS: "http://+:8080"
+      ASPNETCORE_HTTP_PORTS: "8080"
 
-      RabbitMq__Host: "rabbitmq"
-      RabbitMq__Username: "guest"
-      RabbitMq__Password: "guest"
-
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
+      RabbitMq__Host: "host.docker.internal"
+      RabbitMq__Username: "fcguser"
+      RabbitMq__Password: "FcgRabbit@2026"
 
     restart: unless-stopped
-
-    networks:
-      - fcg-network
-
-networks:
-  fcg-network:
-    driver: bridge
