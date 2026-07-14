@@ -1,4 +1,12 @@
 <Solution>
+  <Folder Name="/k8s/">
+    <File Path="configmap.yaml" />
+    <File Path="deployment.yaml" />
+    <File Path="secret.yaml" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
   <Project Path="NotificationsAPI.Application/NotificationsAPI.Application.csproj" />
   <Project Path="NotificationsAPI.Infrastructure/NotificationsAPI.Infrastructure.csproj" />
   <Project Path="NotificationsAPI.Shared/NotificationsAPI.Shared.csproj" />
