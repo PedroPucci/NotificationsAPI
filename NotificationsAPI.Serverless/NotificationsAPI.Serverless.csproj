@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+		<AWSProjectType>Lambda</AWSProjectType>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<PublishReadyToRun>true</PublishReadyToRun>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Amazon.Lambda.Core" Version="2.8.1" />
+		<PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.5" />
+		<PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.2.1" />
+		<PackageReference Include="FCG.Contracts" Version="1.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\NotificationsAPI.Application\NotificationsAPI.Application.csproj" />
+		<ProjectReference Include="..\NotificationsAPI.Shared\NotificationsAPI.Shared.csproj" />
+	</ItemGroup>
+
+</Project>

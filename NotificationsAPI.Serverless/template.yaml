@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: FCG Notifications Serverless - AWS Lambda + SQS
+
+Resources:
+
+  NotificationsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: fcg-notifications
+
+  NotificationsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: fcg-notifications
+      Runtime: dotnet8
+      CodeUri: .
+      Handler: NotificationsAPI.Serverless::NotificationsAPI.Serverless.Function::FunctionHandler
+      MemorySize: 256
+      Timeout: 30
+
+      Events:
+        NotificationsSqs:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt NotificationsQueue.Arn
+            BatchSize: 10
+
+Outputs:
+
+  NotificationsQueueUrl:
+    Description: URL da fila SQS
+    Value: !Ref NotificationsQueue
+
+  NotificationsFunctionName:
+    Description: Nome da Lambda
+    Value: !Ref NotificationsFunction
